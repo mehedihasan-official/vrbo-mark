@@ -3,8 +3,7 @@ import { IoMdDownload } from "react-icons/io";
 import { MdClose, MdMenu } from "react-icons/md";
 import { Link } from "react-router";
 import Loading from "../../../components/Loading";
-import { useTheme } from './../../../hooks/useTheme';
-
+import { useTheme } from "../../../providers/ThemeProvider";
 const MobileResponsive = ({
   navItems,
   isActiveLink,
