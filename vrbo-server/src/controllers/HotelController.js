@@ -1,23 +1,26 @@
-const { getDB } = require("../config/db");
+import { getDB } from "../config/db.js";
+
+const resortsCollection = () => getDB().collection("allResorts");
+const userInfoCollection = () => getDB().collection("userInfo");
 
 // GET /hotel-data
-const getAllHotels = async (req, res) => {
+export const getAllHotels = async (req, res) => {
   try {
-    const result = await getDB().collection("allResorts").find().toArray();
+    const result = await resortsCollection().find().toArray();
     res.json(result);
   } catch (error) {
+    console.error("Error fetching hotel data:", error);
     res.status(500).json({ error: "Error fetching hotel data" });
   }
 };
 
 // GET /userInfo
-const getUserInfo = async (req, res) => {
+export const getUserInfo = async (req, res) => {
   try {
-    const result = await getDB().collection("userInfo").find().toArray();
+    const result = await userInfoCollection().find().toArray();
     res.json(result);
   } catch (error) {
+    console.error("Error fetching userInfo data:", error);
     res.status(500).json({ error: "Error fetching userInfo data" });
   }
 };
-
-module.exports = { getAllHotels, getUserInfo };
