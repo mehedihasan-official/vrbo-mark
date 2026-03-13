@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 @import "tailwindcss";
-
-@custom-variant dark (&:where(.dark, .dark *));
+@plugin "daisyui";
+@variant dark (&:where(.dark, .dark *));

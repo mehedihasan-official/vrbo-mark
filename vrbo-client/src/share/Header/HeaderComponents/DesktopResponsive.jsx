@@ -2,7 +2,7 @@ import { FaMoon, FaSignOutAlt, FaSun, FaUserCircle } from "react-icons/fa";
 import { IoMdDownload } from "react-icons/io";
 import { Link } from "react-router";
 import Loading from "../../../components/Loading";
-import { useTheme } from "../../../hooks/useTheme";
+import { useTheme } from "../../../providers/ThemeProvider";
 
 const DesktopResponsive = ({
   navItems,
