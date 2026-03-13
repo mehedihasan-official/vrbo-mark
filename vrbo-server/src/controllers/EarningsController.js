@@ -1,19 +1,20 @@
-const { getDB } = require("../config/db");
+import { getDB } from "../config/db.js";
 
-const getCollection = () => getDB().collection("yearlyEarnings");
+const earningsCollection = () => getDB().collection("yearlyEarnings");
 
 // GET /yearly-earnings
-const getAllEarnings = async (req, res) => {
+export const getAllEarnings = async (req, res) => {
   try {
-    const result = await getCollection().find().sort({ year: 1 }).toArray();
+    const result = await earningsCollection().find().sort({ year: 1 }).toArray();
     res.json(result);
   } catch (error) {
+    console.error("Error fetching yearly earnings:", error);
     res.status(500).json({ error: "Error fetching yearly earnings" });
   }
 };
 
 // PUT /yearly-earnings/:year
-const updateEarningByYear = async (req, res) => {
+export const updateEarningByYear = async (req, res) => {
   try {
     const { year } = req.params;
     const { amount } = req.body;
@@ -22,7 +23,7 @@ const updateEarningByYear = async (req, res) => {
       return res.status(400).json({ error: "Invalid year or amount" });
     }
 
-    const result = await getCollection().updateOne(
+    const result = await earningsCollection().updateOne(
       { year },
       { $set: { amount } },
       { upsert: true }
@@ -37,17 +38,18 @@ const updateEarningByYear = async (req, res) => {
       upsertedId: result.upsertedId,
     });
   } catch (error) {
+    console.error("Error updating yearly earnings:", error);
     res.status(500).json({ error: "Error updating yearly earnings" });
   }
 };
 
-// PUT /yearly-earnings  → bulk update
-const bulkUpdateEarnings = async (req, res) => {
+// PUT /yearly-earnings → bulk update
+export const bulkUpdateEarnings = async (req, res) => {
   try {
     const earningsData = req.body;
 
     if (!Array.isArray(earningsData)) {
-      return res.status(400).json({ error: "Expected an array of earnings data" });
+      return res.status(400).json({ error: "Expected array of earnings data" });
     }
 
     const bulkOps = earningsData.map((entry) => ({
@@ -58,7 +60,7 @@ const bulkUpdateEarnings = async (req, res) => {
       },
     }));
 
-    const result = await getCollection().bulkWrite(bulkOps);
+    const result = await earningsCollection().bulkWrite(bulkOps);
 
     res.json({
       message: "Bulk update successful",
@@ -67,8 +69,7 @@ const bulkUpdateEarnings = async (req, res) => {
       upsertedCount: result.upsertedCount,
     });
   } catch (error) {
+    console.error("Error bulk updating yearly earnings:", error);
     res.status(500).json({ error: "Error bulk updating yearly earnings" });
   }
 };
-
-module.exports = { getAllEarnings, updateEarningByYear, bulkUpdateEarnings };

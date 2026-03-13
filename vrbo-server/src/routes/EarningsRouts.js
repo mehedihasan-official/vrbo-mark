@@ -1,13 +1,14 @@
-const express = require("express");
-const router = express.Router();
-const {
+import express from "express";
+import {
   getAllEarnings,
   updateEarningByYear,
   bulkUpdateEarnings,
-} = require("../controllers/EarningsController");
+} from "../controllers/EarningsController.js";
 
-router.get("/", getAllEarnings);
-router.put("/:year", updateEarningByYear);
-router.put("/", bulkUpdateEarnings);
+const router = express.Router();
 
-module.exports = router;
+router.get("/yearly-earnings", getAllEarnings);
+router.put("/yearly-earnings/:year", updateEarningByYear);
+router.put("/yearly-earnings", bulkUpdateEarnings);
+
+export default router;
