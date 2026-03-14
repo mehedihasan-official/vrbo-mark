@@ -27,9 +27,9 @@ app.use(morgan("dev"));
 
 // ─── Routes ───────────────────────────────────────────────────────────────────
 app.get("/", (req, res) => res.send("🚀 VRBO Server is running..."));
-app.use("/api", EarningsRoutes);
-app.use("/api", HotelRoutes);
-app.use("/api", UserRoutes);
+app.use("/", EarningsRoutes);
+app.use("/", HotelRoutes);
+app.use("/", UserRoutes);
 
 // ─── Start Server ─────────────────────────────────────────────────────────────
 const startServer = async () => {

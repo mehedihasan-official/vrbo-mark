@@ -31,7 +31,7 @@ const Header = () => {
     {
       path: admin
         ? "/admin-panel/admin-overview"
-        : "/hosting-dashboard/listings",
+        : "/hostingDashboard/listings",
       label: admin ? "Admin Panel" : "My Hosting",
       icon: admin ? <RiAdminFill /> : <FaBuilding />,
     },
