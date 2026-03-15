@@ -15,6 +15,7 @@ import AdminOverview from "../pages/AdminOverview/AdminOverview";
 import CreateNewList from "../pages/CreateNewList/CreateNewList";
 import UpdateEarnings from "../pages/UpdateEarnings/UpdateEarnings";
 import UserControl from "../pages/UserControl/UserControl";
+import Resorts from "../pages/Resorts/Resorts";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
         path: "/registration",
         element: <Registration />,
       },
+      {
+        path: "/resorts",
+        element: <Resorts/>
+      }
     ],
   },
   {
