@@ -69,7 +69,7 @@ const DesktopResponsive = ({
       ) : isUserLoggedIn ? (
         <Link
           className="flex items-center gap-4"
-          to="/hosting-dashboard/listings"
+          to="/hostingDashboard/listings"
         >
           <button onClick={handleSignOut}>
             <FaSignOutAlt className="text-xl text-gray-600 dark:text-gray-300 hover:text-red-600 transition" />

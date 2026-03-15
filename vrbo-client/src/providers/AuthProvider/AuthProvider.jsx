@@ -28,6 +28,8 @@ const AuthProvider = ({ children }) => {
   const [allUsersData, setAllUsersData] = useState([]);
   const [UserInfo, setUserInfo] = useState([]);
 
+  console.log(hotelData) 
+  console.log(hotelListData) 
 
     // Fetch all users data
     const fetchAllUsers = async () => {
@@ -187,7 +189,7 @@ const AuthProvider = ({ children }) => {
         await Promise.all([
           fetch(`${import.meta.env.VITE_API_Link}/hotel-data`).then(res => res.json()).then(setHotelData),
           fetch(`${import.meta.env.VITE_API_Link}/hotels-list`).then(res => res.json()).then(setHotelListData),
-          fetch(`${import.meta.env.VITE_API_Link}/all-earnings`).then(res => res.json()).then(setEarningList),
+          fetch(`${import.meta.env.VITE_API_Link}/yearly-earnings`).then(res => res.json()).then(setEarningList),
           fetch(`${import.meta.env.VITE_API_Link}/UserInfo`).then(res => res.json()).then(setUserInfo),
           fetchYearlyEarnings()
         ]);
