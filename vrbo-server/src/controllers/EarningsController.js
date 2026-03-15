@@ -1,11 +1,23 @@
 import { getDB } from "../config/db.js";
 
 const earningsCollection = () => getDB().collection("yearlyEarnings");
+const earningListCollection = () => getDB().collection("earningList");
 
 // GET /yearly-earnings
 export const getAllEarnings = async (req, res) => {
   try {
     const result = await earningsCollection().find().sort({ year: 1 }).toArray();
+    res.json(result);
+  } catch (error) {
+    console.error("Error fetching yearly earnings:", error);
+    res.status(500).json({ error: "Error fetching yearly earnings" });
+  }
+};
+
+// GET /yearly-earnings-list
+export const getEarningList = async (req, res) => {
+  try {
+    const result = await earningListCollection().find().sort({ year: 1 }).toArray();
     res.json(result);
   } catch (error) {
     console.error("Error fetching yearly earnings:", error);

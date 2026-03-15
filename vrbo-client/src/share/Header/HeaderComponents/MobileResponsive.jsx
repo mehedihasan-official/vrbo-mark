@@ -44,7 +44,7 @@ const MobileResponsive = ({
       {loading ? (
         <Loading className="animate-spin text-lg text-blue-600 dark:text-blue-400" />
       ) : isUserLoggedIn ? (
-        <Link to="/hosting-dashboard/listings">
+        <Link to="/hostingDashboard/listings">
           {usersData?.imageURL ? (
             <img
               src={usersData.imageURL}
@@ -125,7 +125,7 @@ const MobileResponsive = ({
                   {usersData?.name || "Welcome Back"}
                 </p>
                 <Link
-                  to="/hosting-dashboard/listings"
+                  to="/hostingDashboard/listings"
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-sm text-blue-600 dark:text-blue-400"
                 >

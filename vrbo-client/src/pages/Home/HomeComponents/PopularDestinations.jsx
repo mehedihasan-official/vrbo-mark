@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { FaChevronLeft, FaChevronRight, FaStar } from "react-icons/fa";
-import destinations from "../../../../public/database/destinations.json"
+import destinations from "../../../database/destinations.json"
 
 const PopularDestinations = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
