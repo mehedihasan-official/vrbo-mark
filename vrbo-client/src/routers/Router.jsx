@@ -7,6 +7,8 @@ import NotFoundPage from "../pages/NotFoundPage";
 import Registration from "../pages/Registration/Registration";
 import Profile from './../pages/Profile/Profile';
 import Listings from "../pages/Listings/Listings";
+import Earnings from "../pages/Earnings/Earnings";
+import Reservations from "../pages/Reservations/Reservations";
 
 export const router = createBrowserRouter([
   {
@@ -38,6 +40,14 @@ export const router = createBrowserRouter([
       {
         path: "listings",
         element: <Listings/>
+      },
+      {
+        path: "earnings",
+        element: <Earnings />
+      },
+      {
+        path: "reservation",
+        element: <Reservations />
       }
     ],
   },
