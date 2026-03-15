@@ -28,9 +28,6 @@ const AuthProvider = ({ children }) => {
   const [allUsersData, setAllUsersData] = useState([]);
   const [UserInfo, setUserInfo] = useState([]);
 
-  console.log(hotelData) 
-  console.log(hotelListData) 
-
     // Fetch all users data
     const fetchAllUsers = async () => {
       setLoading(true);

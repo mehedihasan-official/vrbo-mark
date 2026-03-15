@@ -9,6 +9,12 @@ import Profile from './../pages/Profile/Profile';
 import Listings from "../pages/Listings/Listings";
 import Earnings from "../pages/Earnings/Earnings";
 import Reservations from "../pages/Reservations/Reservations";
+import AdminPanel from "../layout/AdminPanel/AdminPanel";
+import AdminControl from "../pages/AdminControl/AdminControl";
+import AdminOverview from "../pages/AdminOverview/AdminOverview";
+import CreateNewList from "../pages/CreateNewList/CreateNewList";
+import UpdateEarnings from "../pages/UpdateEarnings/UpdateEarnings";
+import UserControl from "../pages/UserControl/UserControl";
 
 export const router = createBrowserRouter([
   {
@@ -50,6 +56,37 @@ export const router = createBrowserRouter([
         element: <Reservations />
       }
     ],
+  },
+  {
+    path: 'admin-panel',
+    element: <AdminPanel />,
+    children: [
+      {
+        path: 'admin-overview',
+        element: <AdminOverview />
+      },
+      {
+        path: 'admin-control',
+        element: <AdminControl />
+      },
+      {
+        path: 'earnings-update',
+        element: <UpdateEarnings />
+      },
+      {
+        path: 'user-control',
+        element: <UserControl />
+      },
+      {
+        path: 'create-new-list',
+        element: <CreateNewList/>
+      },
+      // Catch-all for admin-panel routes
+      {
+        path: '*',
+        element: <NotFoundPage />
+      }
+    ]
   },
   {
     path: "/*",
