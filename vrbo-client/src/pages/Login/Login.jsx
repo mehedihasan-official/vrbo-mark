@@ -22,7 +22,7 @@ const Login = () => {
         showConfirmButton: false,
         timer: 1500,
       });
-      navigate("/hosting-dashboard/listings");
+      navigate("/hostingDashboard/listings");
     } catch {
       Swal.fire({
         title: "Google Login Failed",

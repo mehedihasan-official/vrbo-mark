@@ -16,7 +16,7 @@ if (!process.env.DB_USER || !process.env.DB_PASS) {
 }
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 
 // ─── Middleware ────────────────────────────────────────────────────────────────
 app.use(cors({ 
