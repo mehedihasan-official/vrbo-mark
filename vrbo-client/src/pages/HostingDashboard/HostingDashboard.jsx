@@ -39,7 +39,7 @@ const HostingDashboard = () => {
             <li><Link to="guide-books" className="flex items-center gap-2 hover:text-blue-600 dark:hover:text-blue-400"><PiBookOpenText /> Guidebooks</Link></li>
             <div className="border border-gray-400 dark:border-gray-600 my-4"></div>
             <li><Link to="/" className="flex items-center gap-2 hover:text-blue-600 dark:hover:text-blue-400"><FaHome /> Home</Link></li>
-            <li><Link to="/hosting-dashboard/profile" className="flex items-center gap-2 hover:text-blue-600 dark:hover:text-blue-400"><FaUser /> Profile</Link></li>
+            <li><Link to="/hostingDashboard/profile" className="flex items-center gap-2 hover:text-blue-600 dark:hover:text-blue-400"><FaUser /> Profile</Link></li>
           </ul>
         </div>
 
@@ -65,7 +65,7 @@ const HostingDashboard = () => {
                 <li><Link to="create-new-list" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-2"><MdAddHome /> Create a new list</Link></li>
                 <div className="border border-gray-400 dark:border-gray-600 my-4"></div>
                 <li><Link to="/" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-2"><FaHome /> Home</Link></li>
-                <li><Link to="/hosting-dashboard/profile" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-2"><FaUser /> Profile</Link></li>
+                <li><Link to="/hostingDashboard/profile" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-2"><FaUser /> Profile</Link></li>
               </ul>
             </div>
           </Transition>

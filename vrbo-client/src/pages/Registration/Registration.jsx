@@ -38,7 +38,7 @@ const Registration = () => {
     try {
       await googleLogin();
       Swal.fire({ title: "Signed up with Google!", icon: "success", showConfirmButton: false, timer: 1500 });
-      navigate('/');
+      navigate("/hostingDashboard/listings");
     } catch (error) {
       Swal.fire({ title: "Google Sign-up Failed", text: error.message, icon: "error" });
     } finally {
