@@ -10,19 +10,22 @@ const Listings = () => {
   const [filteredListings, setFilteredListings] = useState([]);
 
   useEffect(() => {
-    if (!loading && hotelData && hotelListData) {
-      const matchedData = hotelData.filter((hotel) =>
-        hotelListData.some((listItem) => listItem.name === hotel.title)
-      );
-      const filteredData = matchedData.filter((item) => {
+  if (!loading && hotelData && hotelListData) {
+    const matchedData = hotelData.filter((hotel) =>
+      hotelListData.some((listItem) => listItem.name === hotel.title)
+    );
+    const filteredData = matchedData
+      .filter((item) => {
         const itemName = item.title?.toLowerCase() || "";
         const itemLocation = item.location?.toLowerCase() || "";
         const search = searchTerm.toLowerCase();
         return itemName.includes(search) || itemLocation.includes(search);
-      });
-      setFilteredListings(filteredData);
-    }
-  }, [hotelListData, hotelData, searchTerm, loading]);
+      })
+      .sort((a, b) => a.id - b.id); // 👈 sort by database id ascending
+
+    setFilteredListings(filteredData);
+  }
+}, [hotelListData, hotelData, searchTerm, loading]);
 
   return (
     <div className="mt-8 bg-white dark:bg-gray-950 min-h-screen transition-colors duration-300">

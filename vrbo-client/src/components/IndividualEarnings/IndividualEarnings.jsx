@@ -12,7 +12,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { AuthContext } from "../../providers/AuthProvider";
+import { AuthContext } from "../../providers/AuthProvider/AuthProvider";
 
 const IndividualEarnings = () => {
   const { earningList } = useContext(AuthContext);

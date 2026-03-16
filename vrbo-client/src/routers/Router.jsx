@@ -17,6 +17,7 @@ import UpdateEarnings from "../pages/UpdateEarnings/UpdateEarnings";
 import UserControl from "../pages/UserControl/UserControl";
 import Resorts from "../pages/Resorts/Resorts";
 import SingleResortPage from "../components/SingleResortPage/SingleResortPage";
+import IndividualEarnings from "../components/IndividualEarnings/IndividualEarnings";
 
 export const router = createBrowserRouter([
   {
@@ -64,7 +65,11 @@ export const router = createBrowserRouter([
       {
         path: "reservation",
         element: <Reservations />
-      }
+      },
+      {
+        path: 'individual-earnings/:id',
+        element: <IndividualEarnings />
+      },
     ],
   },
   {
