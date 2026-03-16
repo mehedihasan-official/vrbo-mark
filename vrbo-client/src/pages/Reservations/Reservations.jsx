@@ -11,8 +11,9 @@ const Reservations = () => {
 
   const filterData = (filter) => {
     let result = [];
-    if (filter === "All") {
-      result = hotelData.filter((item) => item.category === "Farms");
+    // ✅ Fix
+if (filter === "All") {
+  result = hotelData.sort((a, b) => a.id - b.id);
     } else {
       result = hotelData.filter((item) => item.status && item.status.toLowerCase() === filter.toLowerCase());
     }
