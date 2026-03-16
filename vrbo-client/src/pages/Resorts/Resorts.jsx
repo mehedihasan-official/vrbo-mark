@@ -40,21 +40,22 @@ const Resorts = () => {
     setCurrentPage(1);
   }, [selectedCategory, searchTerm]);
 
-  const filteredAll = hotelData
-    ? hotelData
-        .filter(
-          (item) =>
-            selectedCategory === "All" || item.category === selectedCategory,
-        )
-        .filter((item) => {
-          const term = searchTerm.toLowerCase();
-          return (
-            (item.name && item.name.toLowerCase().includes(term)) ||
-            (item.title && item.title.toLowerCase().includes(term)) ||
-            (item.location && item.location.toLowerCase().includes(term))
-          );
-        })
-    : [];
+ const filteredAll = hotelData
+  ? hotelData
+      .filter(
+        (item) =>
+          selectedCategory === "All" || item.category === selectedCategory,
+      )
+      .filter((item) => {
+        const term = searchTerm.toLowerCase();
+        return (
+          (item.name && item.name.toLowerCase().includes(term)) ||
+          (item.title && item.title.toLowerCase().includes(term)) ||
+          (item.location && item.location.toLowerCase().includes(term))
+        );
+      })
+      .sort((a, b) => a.id - b.id) // 👈 only this line added
+  : [];
 
   const totalPages = Math.ceil(filteredAll.length / ITEMS_PER_PAGE);
   const filteredData = filteredAll.slice(
@@ -102,7 +103,7 @@ const Resorts = () => {
         className="relative h-72 bg-cover bg-center overflow-hidden"
         style={{
           backgroundImage:
-            "url('https://cf.bstatic.com/xdata/images/hotel/max1024x768/600234276.jpg?k=604573baa332da82d384c12b12ac00941e7dcb8e309ed657dbcd9e5b0fea26a1&o=&hp=1')",
+            "url('https://media.vrbo.com/lodging/34000000/33500000/33495000/33494937/426c02ae.jpg?impolicy=resizecrop&rw=1200&ra=fit')",
         }}
       >
         <div className="absolute inset-0 bg-black/55" />

@@ -7,7 +7,7 @@ const Reservations = () => {
   const [selectedFilter, setSelectedFilter] = useState("All");
   const { hotelData = [], loading } = useContext(AuthContext);
 
-  useEffect(() => { filterData("All"); }, [hotelData]);
+  useEffect(() => { filterData("All") }, [hotelData]);
 
   const filterData = (filter) => {
     let result = [];
