@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
 import { useParams } from "react-router";
-import { AuthContext } from "../../providers/AuthProvider";
 import BookingCard from "./SingleResortComponents/BookingCardSR";
 import ImageGallery from "./SingleResortComponents/ImageGallerySR";
 import PropertyDetails from "./SingleResortComponents/PropertyDetailsSR";
 import PropertyHeader from "./SingleResortComponents/PropertyHeaderSR";
 import PropertyTabs from "./SingleResortComponents/PropertyTabsSR";
+import { AuthContext } from "../../providers/AuthProvider/AuthProvider";
 
 const SingleResortPage = () => {
   const { id } = useParams();
