@@ -19,6 +19,7 @@ const IndividualEarnings = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
+  console.log(earningList)
   // Convert the id from string to number
   const selectedEarning = earningList.find((item) => item.id === Number(id));
 
