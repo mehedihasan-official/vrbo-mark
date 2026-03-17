@@ -11,6 +11,8 @@ const InfoCard = ({
   const { id, price, date, location, image, title, description, category } =
     data;
 
+    console.log(data)
+
   // Truncate description to specified number of lines
   const truncateText = (text, lines = 3) => {
     if (!text) return "";

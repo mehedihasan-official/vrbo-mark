@@ -2,14 +2,31 @@ import React, { useContext } from "react";
 import InfoCard from "../../../components/InfoCard/InfoCard";
 import { AuthContext } from "../../../providers/AuthProvider/AuthProvider";
 
+// Returns a future date string in MM/DD/YYYY, offset by `daysFromNow`
+const getFutureDate = (daysFromNow) => {
+  const date = new Date();
+  date.setDate(date.getDate() + daysFromNow);
+  const mm = String(date.getMonth() + 1).padStart(2, "0");
+  const dd = String(date.getDate()).padStart(2, "0");
+  const yyyy = date.getFullYear();
+  return `${mm}/${dd}/${yyyy}`;
+};
+
+// Staggered future check-in offsets for each upcoming card
+const UPCOMING_OFFSETS = [14, 30, 47, 65];
+
 const Upcoming = () => {
   const { hotelData } = useContext(AuthContext);
 
   const hiltonResorts = hotelData
     ? [...hotelData]
         .filter((hotel) => hotel.title?.toLowerCase().includes("hilton"))
-        .sort((a, b) => b.id - a.id) // highest IDs first
-        .slice(0, 4)                  // only 4 resorts
+        .sort((a, b) => b.id - a.id)
+        .slice(0, 4)
+        .map((resort, index) => ({
+          ...resort,
+          date: getFutureDate(UPCOMING_OFFSETS[index]),
+        }))
     : [];
 
   if (!hotelData) {
