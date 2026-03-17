@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { TbGenderFemale } from "react-icons/tb";
+import { TbGenderFemale, TbGenderMale } from "react-icons/tb";
 import { SlGraduation } from "react-icons/sl";
 import { MdWorkOutline, MdOutlinePets, MdOutlineLightbulbCircle, MdOutlineRoomService } from "react-icons/md";
 import { BsStars } from "react-icons/bs";
@@ -55,7 +55,7 @@ const Profile = () => {
       <div className='lg:grid lg:items-center lg:-ml-10 lg:-mt-5 lg:pr-10 lg:border-l-2 border-gray-300 dark:border-gray-700'>
         <div className="mx-10 lg:col-span-4 lg:space-y-3">
           {[
-            { icon: <TbGenderFemale className="text-xl" />, text: gender },
+            { icon: <TbGenderMale className="text-xl" />, text: gender },
             { icon: <SlGraduation className="text-xl" />, text: `Where I went to school: ${education}` },
             { icon: <MdWorkOutline />, text: `My work: ${work}` },
             { icon: <BsStars className="text-xl" />, text: `What makes my home unique: ${uniqueHomeFeature}` },
