@@ -8,7 +8,8 @@ const Complete = () => {
     const hiltonResorts = hotelData
         ? [...hotelData]
             .filter((hotel) => hotel.title?.toLowerCase().includes("hilton"))
-            .sort((a, b) => a.id - b.id)
+            .sort((a, b) => a.id - b.id) // lowest IDs first
+            .slice(0, 4)                  // only 4 resorts
         : [];
 
     if (!hotelData) {
@@ -26,7 +27,7 @@ const Complete = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                         d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <p className="text-lg font-medium text-gray-500">No completed Hilton reservations found</p>
+                <p className="text-lg font-medium text-gray-500">No completed reservations found</p>
                 <p className="text-sm text-gray-400">Your completed stays will appear here</p>
             </div>
         );
@@ -36,19 +37,20 @@ const Complete = () => {
         <div className="container mx-auto px-4 py-8">
             <h2 className="text-2xl font-bold mb-6 text-center">Completed Reservations</h2>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
                 {hiltonResorts.map((resort) => (
-                    <InfoCard
-                        key={resort.id}
-                        data={resort}
-                        showStatus={true}
-                        statusVariant="success"
-                    />
+                    <div key={resort.id} className="relative">
+                        {/* Completed Badge */}
+                        <div className="absolute top-3 left-3 z-10 flex items-center gap-1 bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
+                            ✓ Completed
+                        </div>
+                        <InfoCard data={resort} />
+                    </div>
                 ))}
             </div>
 
             <div className="mt-6 text-center text-sm text-gray-500">
-                <p>{hiltonResorts.length} Hilton resort{hiltonResorts.length !== 1 ? "s" : ""} found</p>
+                <p>Showing {hiltonResorts.length} completed reservation{hiltonResorts.length !== 1 ? "s" : ""}</p>
             </div>
         </div>
     );

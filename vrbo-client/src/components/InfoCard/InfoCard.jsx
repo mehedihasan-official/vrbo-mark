@@ -47,7 +47,7 @@ const InfoCard = ({
               <div className="absolute bottom-3 right-3 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1.5 shadow-lg">
                 <div className="flex items-baseline gap-1">
                   <span className="text-lg sm:text-xl font-bold text-gray-900">
-                    ${price}
+                    {price}
                   </span>
                   <span className="text-xs text-gray-600">/night</span>
                 </div>
