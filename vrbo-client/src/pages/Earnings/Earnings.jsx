@@ -4,10 +4,13 @@ import { AuthContext } from "../../providers/AuthProvider/AuthProvider";
 
 const Earnings = () => {
   const { yearlyEarnings } = useContext(AuthContext);
+  console.log(yearlyEarnings)
 
   const formattedEarnings = useMemo(() => {
     if (!Array.isArray(yearlyEarnings)) return [];
-    return yearlyEarnings.map((item) => ({ year: item.year, "Amount Earned": item.amount }));
+    return yearlyEarnings
+      .filter((item) => Number(item.amount) !== 0)
+      .map((item) => ({ year: item.year, "Amount Earned": item.amount }));
   }, [yearlyEarnings]);
 
   const formatCurrency = (value) =>
@@ -33,7 +36,7 @@ const Earnings = () => {
           <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold uppercase text-gray-800 dark:text-white">
             Yearly Earnings <span className="font-bold">Chart</span>
           </h3>
-        </div>
+        </div> 
 
         {formattedEarnings.length > 0 ? (
           <div className="bg-white dark:bg-gray-800 p-3 sm:p-4 md:p-6 rounded-lg shadow-md">
